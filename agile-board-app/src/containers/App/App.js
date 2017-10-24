@@ -5,28 +5,28 @@ import {
 } from 'react-router-dom';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import TestButton from '../../components/TestButton';
+import customTheme from '../../customTheme';
+import HeaderBar from '../../components/HeaderBar';
 
-import logo from '../../logo.svg';
+import logo from '../../Dish_Network_logo_2012.svg';
 import styles from './App.scss';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}>
           
           <div className={styles.app}>
             <header className={styles.header}>
               <img src={logo} className={styles.logo} alt="logo" />
-              <h1 className={styles.title}>Welcome to React</h1>
+              <h1 className={styles.title}>AgileBoard <small>v0.0.1</small> </h1>
             </header>
             <p className={styles.intro}>
-              To get started, edit <code>src/App.js</code> and save to reload.
+              This is an exploratory project in using IoT on the SCM/DCM team
             </p>
-            <Route component={TestButton} />
+            <Route component={HeaderBar} />
           </div>
         </MuiThemeProvider>
       </BrowserRouter>
