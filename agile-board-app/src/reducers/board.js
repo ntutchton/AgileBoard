@@ -24,8 +24,12 @@ export default function Board(state=initialState, action){
 				return board;
 			})
 		case BoardActionTypes.HANDLE_SAVE:
-			console.log('saving board at index ' + action.index)
-			return state;
+			return state.map((board, index) => {
+				if (index === action.index){
+					console.log('saving board at index ' + index)
+				}
+				return board;
+			})
 		default:
 			return state;
 	}

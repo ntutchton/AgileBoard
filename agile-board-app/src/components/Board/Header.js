@@ -7,14 +7,18 @@ import NavClose from 'material-ui/svg-icons/navigation/close';
 import NavOpen from 'material-ui/svg-icons/navigation/expand-more';
 
 
-const Board = props => (
+
+const Header = props => (
 	<div>
 		<AppBar
 			key={props.index}
 			title={props.title}
 			onTitleTouchTap={() => props.toggleBoard(props.index)}  
 			onLeftIconButtonTouchTap={() => props.toggleBoard(props.index)}   
-			onRightIconButtonTouchTap={() => props.handleSave(props.index)}
+			onRightIconButtonTouchTap={() => {
+				props.handleSave(props.index);
+				props.sendMessage();
+			}}
 			iconElementRight={<IconButton> <SaveIcon/> </IconButton>}
 			iconElementLeft={props.active 
 				? <IconButton><NavOpen/></IconButton>
@@ -22,12 +26,15 @@ const Board = props => (
 			}
 		/>
 	</div>
-);
+)
 
-Board.propTypes = {
+Header.propTypes = {
 	index: PropTypes.number.isRequired,
 	title: PropTypes.string.isRequired,
 	toggleBoard: PropTypes.func.isRequired,
+	handleSave: PropTypes.func.isRequired,
+	active: PropTypes.bool.isRequired,
+	sendMessage:PropTypes.func.isRequired,
 };
 
-export default Board;
+export default Header;
