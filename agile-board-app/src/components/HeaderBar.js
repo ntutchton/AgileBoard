@@ -13,14 +13,15 @@ class HeaderBar extends Component {
 		active:true,
 		boards:[{title:"Operations"}, {title:"Development"}]
 	}
- handleToggle = (e, active) => {
-	console.log(`opening board...${this.state.active}`);
-	this.setState({active:!this.state.active});
-}
+	
+  handleToggle = (e, active) => {
+		console.log(`opening board...${this.state.active}`);
+		this.setState({active:!this.state.active});
+	}
 
-handleSave = (e) => {
-	console.log('saving...')
-}
+	handleSave = (e) => {
+		console.log('saving...')
+	}
 	render() {
 		return (
 			<div>

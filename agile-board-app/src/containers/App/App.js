@@ -13,6 +13,11 @@ import logo from '../../Dish_Network_logo_2012.svg';
 import styles from './App.scss';
 
 class App extends Component {
+
+  // state = {
+    // boards:[{title:"Operations", active:true,}, {title:"Development", active:true,}]
+  // }
+
   render() {
     return (
       <BrowserRouter>
