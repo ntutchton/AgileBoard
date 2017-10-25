@@ -4,24 +4,32 @@ import {
   Route,
 } from 'react-router-dom';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import customTheme from '../../customTheme';
-import HeaderBar from '../../components/HeaderBar';
+///
+import {PropTypes} from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as BoardActionCreators from '../../actions/board';
+
+import Board from '../../components/Board';
 
 import logo from '../../Dish_Network_logo_2012.svg';
 import styles from './App.scss';
 
 class App extends Component {
 
-  // state = {
-    // boards:[{title:"Operations", active:true,}, {title:"Development", active:true,}]
-  // }
+ static propTypes = {
+    boards: PropTypes.array.isRequired
+  };
 
   render() {
+
+    const { dispatch, boards } = this.props;
+    const toggleBoard = bindActionCreators(BoardActionCreators.toggleBoard, dispatch);
+
+
+
     return (
       <BrowserRouter>
-        <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}>
           
           <div className={styles.app}>
             <header className={styles.header}>
@@ -31,12 +39,20 @@ class App extends Component {
             <p className={styles.intro}>
               This is an exploratory project in using IoT on the SCM/DCM team
             </p>
-            <Route component={HeaderBar} />
           </div>
-        </MuiThemeProvider>
+
+
+
       </BrowserRouter>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => (
+  {
+    boards: state
+  }
+
+)
+
+export default connect(mapStateToProps)(App);

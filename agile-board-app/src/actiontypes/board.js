@@ -1,0 +1,1 @@
+export const TOGGLE_BOARD = "board/TOGGLE_BOARD";
