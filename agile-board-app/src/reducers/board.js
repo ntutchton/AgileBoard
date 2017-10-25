@@ -21,7 +21,11 @@ export default function Board(state=initialState, action){
 						active: !board.active
 					}
 				}
+				return board;
 			})
+		case BoardActionTypes.HANDLE_SAVE:
+			console.log('saving board at index ' + action.index)
+			return state;
 		default:
 			return state;
 	}

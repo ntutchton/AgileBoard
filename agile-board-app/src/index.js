@@ -4,7 +4,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import RootReducer from './reducers/board';
+import RootReducer from './reducers';
 
 import './index.scss';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

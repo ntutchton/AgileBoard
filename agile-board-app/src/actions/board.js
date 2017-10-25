@@ -6,3 +6,10 @@ export const toggleBoard = index => {
 		index
 	};
 };
+
+export const handleSave = index => {
+	return {
+		type: BoardActionTypes.HANDLE_SAVE,
+		index
+	}
+}

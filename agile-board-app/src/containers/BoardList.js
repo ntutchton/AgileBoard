@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import * as BoardActionCreators from '../actions/board';
 import Board from '../components/Board';
 
 class BoardList extends Component {
@@ -12,20 +10,22 @@ class BoardList extends Component {
 
 	render(){
 
-		const boardComponents = this.props.boards.map((board, index) => {
+		const boardComponents = this.props.boards.map((board, index) => (
 			<Board 
 				index={index}
 				title={board.title}
 				key={board.title}
 				toggleBoard={this.props.toggleBoard}
+				handleSave={this.props.handleSave}
+				active={board.active}
 			/>
-		});
+		));
 
 		return (
 			<div className="boardlist">
 				{ boardComponents }
 			</div>
-		)
+		);
 	}
 }
 

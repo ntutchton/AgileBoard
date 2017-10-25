@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter,
-  Route,
 } from 'react-router-dom';
 
 ///
@@ -10,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as BoardActionCreators from '../../actions/board';
 
-import Board from '../../components/Board';
+import BoardList from '../BoardList';
 
 import logo from '../../Dish_Network_logo_2012.svg';
 import styles from './App.scss';
@@ -18,15 +17,14 @@ import styles from './App.scss';
 class App extends Component {
 
  static propTypes = {
-    boards: PropTypes.array.isRequired
+    reducers: PropTypes.object.isRequired
   };
 
   render() {
 
-    const { dispatch, boards } = this.props;
+    const { dispatch, reducers } = this.props;
     const toggleBoard = bindActionCreators(BoardActionCreators.toggleBoard, dispatch);
-
-
+    const handleSave = bindActionCreators(BoardActionCreators.handleSave, dispatch);
 
     return (
       <BrowserRouter>
@@ -39,10 +37,15 @@ class App extends Component {
             <p className={styles.intro}>
               This is an exploratory project in using IoT on the SCM/DCM team
             </p>
+        
+
+            <BoardList 
+              boards={reducers.boards} 
+              toggleBoard={toggleBoard}
+              handleSave={handleSave}
+            />
+
           </div>
-
-
-
       </BrowserRouter>
     );
   }
@@ -50,7 +53,7 @@ class App extends Component {
 
 const mapStateToProps = state => (
   {
-    boards: state
+    reducers: state
   }
 
 )

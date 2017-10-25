@@ -6,16 +6,17 @@ import SaveIcon from 'material-ui/svg-icons/content/save';
 import NavClose from 'material-ui/svg-icons/navigation/close';
 import NavOpen from 'material-ui/svg-icons/navigation/expand-more';
 
+
 const Board = props => (
 	<div>
 		<AppBar
 			key={props.index}
-			title={props.board.title}
-			onTitleTouchTap={props.toggleBoard} 
-			onLeftIconButtonTouchTap={props.toggleBoard}   
-			 
+			title={props.title}
+			onTitleTouchTap={() => props.toggleBoard(props.index)}  
+			onLeftIconButtonTouchTap={() => props.toggleBoard(props.index)}   
+			onRightIconButtonTouchTap={() => props.handleSave(props.index)}
 			iconElementRight={<IconButton> <SaveIcon/> </IconButton>}
-			iconElementLeft={props.board.active 
+			iconElementLeft={props.active 
 				? <IconButton><NavOpen/></IconButton>
 				: <IconButton><NavClose/></IconButton>
 			}
@@ -30,20 +31,3 @@ Board.propTypes = {
 };
 
 export default Board;
-
-// class Board extends Component {
-	
-//   	toggleBoard = (e, active) => {
-// 		console.log(`opening board...${this.state.active}`);
-// 		this.setState({active:!this.state.active});
-// 	}
-
-// 	handleSave = (e) => {
-// 		console.log('saving...')
-// 	}
-// 	render() {
-// 		return (
-// 			
-// 		);
-// 	}
-// };
