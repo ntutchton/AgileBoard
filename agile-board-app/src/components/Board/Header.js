@@ -5,11 +5,13 @@ import IconButton from 'material-ui/IconButton';
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import NavClose from 'material-ui/svg-icons/navigation/close';
 import NavOpen from 'material-ui/svg-icons/navigation/expand-more';
+import styles from './board.scss';
 
+//updateDays 
 
 
 const Header = props => (
-	<div>
+	<div className={styles.header}>
 		<AppBar
 			key={props.index}
 			title={props.title}

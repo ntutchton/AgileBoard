@@ -5,7 +5,8 @@ import Board from '../components/Board';
 class BoardList extends Component {
 
   static propTypes = {
-    boards: PropTypes.array.isRequired
+    boards: PropTypes.array.isRequired,
+    days: PropTypes.array.isRequired,
   };
 
 	render(){
@@ -18,6 +19,7 @@ class BoardList extends Component {
 				toggleBoard={this.props.toggleBoard}
 				handleSave={this.props.handleSave}
 				active={board.active}
+				days={this.props.days}
 			/>
 		));
 

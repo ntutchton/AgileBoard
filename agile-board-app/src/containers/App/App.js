@@ -8,6 +8,7 @@ import {PropTypes} from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as BoardActionCreators from '../../actions/board';
+import * as DayActionCreators from '../../actions/day';
 
 import BoardList from '../BoardList';
 
@@ -25,6 +26,7 @@ class App extends Component {
     const { dispatch, reducers } = this.props;
     const toggleBoard = bindActionCreators(BoardActionCreators.toggleBoard, dispatch);
     const handleSave = bindActionCreators(BoardActionCreators.handleSave, dispatch);
+    const updateDays = bindActionCreators(DayActionCreators.updateDays, dispatch);
 
     return (
       <BrowserRouter>
@@ -40,7 +42,8 @@ class App extends Component {
         
 
             <BoardList 
-              boards={reducers.boards} 
+              boards={reducers.boards}
+              days={reducers.days} 
               toggleBoard={toggleBoard}
               handleSave={handleSave}
             />

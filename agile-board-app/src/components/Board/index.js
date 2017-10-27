@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Snackbar from 'material-ui/Snackbar';
 import Header from './Header';
+import Body from './Body';
+import styles from './board.scss';
 
 
 class Board extends Component {
@@ -29,7 +31,7 @@ class Board extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className={styles.container}>
 				<Header 
 					index={this.props.index}
 					title={this.props.title}
@@ -38,14 +40,18 @@ class Board extends Component {
 					active={this.props.active}
 					sendMessage={this.sendMessage}
 				/>
+				<Body 
+					active={this.props.active}
+					days={this.props.days}
+				/>
 
 				<Snackbar 
 					open={this.state.message}
-		      message={`The ${this.props.title} board has been saved`}
-		      autoHideDuration={2000}
-		      onRequestClose={this.hideMessage}
-		      style={{textAlign:"center"}}
-			  />
+				    message={`The ${this.props.title} board has been saved`}
+				    autoHideDuration={2000}
+				    onRequestClose={this.hideMessage}
+				    style={{textAlign:"center"}}
+				/>
 			</div>
 	)}
 };
@@ -56,6 +62,7 @@ Board.propTypes = {
 	toggleBoard: PropTypes.func.isRequired,
 	handleSave: PropTypes.func.isRequired,
 	active: PropTypes.bool.isRequired,
+	days: PropTypes.array.isRequired,
 };
 
 export default Board;
