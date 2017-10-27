@@ -6,10 +6,11 @@
 	width:100%;
 	text-align:left;
 }
+
 .body{
 	width: 95%;
 	padding: 0 2% 0 2%;
 	margin-bottom:25px;
-	overflow:auto;
+	overflow-x:auto;
 	display:inline-flex;
 }

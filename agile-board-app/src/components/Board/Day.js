@@ -1,39 +1,40 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Card, CardActions, CardText, CardHeader} from 'material-ui/Card';
+import {List, ListItem} from 'material-ui/List';
 import FlatButton from 'material-ui/FlatButton';
-
+import styles from './board.scss';
 
 class Day extends Component {
 	static propTypes = {
-		active: PropTypes.bool.isRequired,
 		date: PropTypes.string.isRequired,
-};
+	};
 
-//need to refator BODY to be a class that prforms condition logic on Days,
-//do not need to pass active here, only deal with items
+ titleStyle = {
+ 		fontSize:"200%",
+ 		color:"red",
+	}
 
 	render() {
-		if (this.props.active){
+
 			return(
-			<Card expanded={this.props.active}>
+			<Card expanded={true}>
 			  <CardHeader
 			    title={this.props.date}
+			    titleStyle={this.titleStyle}
 			    expandable={true}
 			  />
-			  <CardActions expandable={true}>
-			    <FlatButton label="Action1" />
-			    <FlatButton label="Action2" />
-			  </CardActions>
 			  <CardText expandable={true}>
-		      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-		      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-		      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-		      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+			  	<List>
+			  		<ListItem	primaryText="BEEP"/>
+			  		<ListItem	primaryText="BOOP"/>
+			  		<ListItem	primaryText="BEEP"/>
+			  		<ListItem	primaryText="BOOP"/>
+
+			  	</List>
 			  </CardText>
 			</Card>
-		)}
-			else return null
+		)
 	}
 }
 
