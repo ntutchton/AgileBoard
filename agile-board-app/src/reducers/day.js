@@ -60,11 +60,11 @@ const initialState = {
 			},
 			{
 				name: "SPICA D",
-				status: ""
+				status: "BUILD"
 			},
 			{
 				name: "AX110",
-				status: ""
+				status: "TEST"
 			},
 		]
 	},
