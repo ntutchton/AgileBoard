@@ -6,16 +6,17 @@ import Day from './Day';
 class Body extends Component {
 	static propTypes = {
 		active: PropTypes.bool.isRequired,
-  	days: PropTypes.array.isRequired,
+  		daylist: PropTypes.array.isRequired,
 	}
 
 		render() {
 
 			const dayList = 
-				this.props.days.map(day => (
+				this.props.daylist.map(day => (
 					<Day 
 						date={day.date}
 						key={day.date}
+						items={day.items}
 					/>
 			));
 			

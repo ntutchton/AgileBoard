@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Card, CardActions, CardText, CardHeader} from 'material-ui/Card';
-import {List, ListItem} from 'material-ui/List';
-import FlatButton from 'material-ui/FlatButton';
-import styles from './board.scss';
+import {Card, CardText, CardHeader} from 'material-ui/Card';
+import {List} from 'material-ui/List';
+//import styles from './board.scss';
+import Item from './Item';
 
 class Day extends Component {
 	static propTypes = {
 		date: PropTypes.string.isRequired,
+		items: PropTypes.array.isRequired,
 	};
 
  titleStyle = {
@@ -26,11 +27,14 @@ class Day extends Component {
 			  />
 			  <CardText expandable={true}>
 			  	<List>
-			  		<ListItem	primaryText="BEEP"/>
-			  		<ListItem	primaryText="BOOP"/>
-			  		<ListItem	primaryText="BEEP"/>
-			  		<ListItem	primaryText="BOOP"/>
-
+			  		{
+			  			this.props.items.map(item => (
+			  				<Item	
+			  					item={item}
+			  					key={item.name}
+			  				/>
+			  			))
+			  		}
 			  	</List>
 			  </CardText>
 			</Card>

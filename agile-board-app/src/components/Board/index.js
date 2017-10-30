@@ -42,7 +42,7 @@ class Board extends Component {
 				/>
 				<Body 
 					active={this.props.active}
-					days={this.props.days}
+					daylist={this.props.daylist}
 				/>
 
 				<Snackbar 
@@ -62,7 +62,7 @@ Board.propTypes = {
 	toggleBoard: PropTypes.func.isRequired,
 	handleSave: PropTypes.func.isRequired,
 	active: PropTypes.bool.isRequired,
-	days: PropTypes.array.isRequired,
+	daylist: PropTypes.array.isRequired,
 };
 
 export default Board;

@@ -6,8 +6,12 @@ class BoardList extends Component {
 
   static propTypes = {
     boards: PropTypes.array.isRequired,
-    days: PropTypes.array.isRequired,
+    days: PropTypes.object.isRequired,
   };
+
+  componentDidMount(){
+  	this.props.updateDays();
+  }
 
 	render(){
 
@@ -19,7 +23,7 @@ class BoardList extends Component {
 				toggleBoard={this.props.toggleBoard}
 				handleSave={this.props.handleSave}
 				active={board.active}
-				days={this.props.days}
+				daylist={this.props.days.daylist}
 			/>
 		));
 

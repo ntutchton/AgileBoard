@@ -46,6 +46,7 @@ class App extends Component {
               days={reducers.days} 
               toggleBoard={toggleBoard}
               handleSave={handleSave}
+              updateDays={updateDays}
             />
 
           </div>
