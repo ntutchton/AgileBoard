@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as BoardActionCreators from '../../actions/board';
 import * as DayActionCreators from '../../actions/day';
+import * as BucketActionCreators from '../../actions/bucket';
 
 import BoardList from '../BoardList';
 
@@ -27,6 +28,8 @@ class App extends Component {
     const toggleBoard = bindActionCreators(BoardActionCreators.toggleBoard, dispatch);
     const handleSave = bindActionCreators(BoardActionCreators.handleSave, dispatch);
     const updateDays = bindActionCreators(DayActionCreators.updateDays, dispatch);
+    const addTask = bindActionCreators(BucketActionCreators.addTask, dispatch);
+    const removeTask = bindActionCreators(BucketActionCreators.removeTask, dispatch);
 
     return (
       <BrowserRouter>
@@ -37,16 +40,20 @@ class App extends Component {
               <h1 className={styles.title}>AgileBoard <small>v0.0.1</small> </h1>
             </header>
             <p className={styles.intro}>
-              This is an exploratory project in using IoT on the SCM/DCM team
+              This is an exploratory project in using IoT on the SCM/DCM team. <br/>
+              This page is being served as a static UI.  Changes made will not be saved.
             </p>
         
 
             <BoardList 
               boards={reducers.boards}
-              days={reducers.days} 
+              days={reducers.days}
+              buckets={reducers.buckets} 
               toggleBoard={toggleBoard}
               handleSave={handleSave}
               updateDays={updateDays}
+              addTask={addTask}
+              removeTask={removeTask}
             />
 
           </div>

@@ -132,7 +132,7 @@ class Item extends Component {
 			<div>
 				<ListItem
 					style={this.state.statusColor}
-					key={this.props.item}
+					key={this.props.item.name + ":" + this.props.item.status}
 					primaryText={this.props.item.name}
 					secondaryText={this.state.status}
 					onClick={this.toggleChangeStatus}

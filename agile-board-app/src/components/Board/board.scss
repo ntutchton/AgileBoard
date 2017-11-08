@@ -12,5 +12,20 @@
 	padding: 0 2% 0 2%;
 	margin-bottom:25px;
 	overflow-x:auto;
-	display:inline-flex;
+	-ms-box-orient: horizontal;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+}
+.bucket{
+    flex-direction: column;
+    flex:1;
+    -webkit-align-self: stretch; 
+    align-self: stretch;
+}
+.addbutton{
+	margin-bottom: 20px;
 }

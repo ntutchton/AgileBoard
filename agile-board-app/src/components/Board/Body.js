@@ -2,14 +2,18 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styles from './board.scss';
 import Day from './Day';
+import Bucket from './Bucket';
 
 class Body extends Component {
 	static propTypes = {
 		active: PropTypes.bool.isRequired,
-  		daylist: PropTypes.array.isRequired,
+  		daylist: PropTypes.array,
+  		bucketList: PropTypes.array,
 	}
 
-		render() {
+	render() {
+
+		if (this.props.daylist){
 
 			const dayList = 
 				this.props.daylist.map(day => (
@@ -29,6 +33,26 @@ class Body extends Component {
 			}
 			else return null
 		}
-}
+		if (this.props.bucketList){
+			const buckets = 
+				this.props.bucketList.map(bucket => (
+					<Bucket
+						title={bucket.title}
+						key={bucket.title}
+						tasks={bucket.tasks}
+					/>
+				))
 
+			if(this.props.active){
+				return (
+					<div className={styles.body}>
+						{buckets}
+					</div>
+				)
+			}
+			else return null
+		}
+		else return null
+	}
+}
 export default Body;
