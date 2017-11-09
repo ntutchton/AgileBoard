@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {ListItem} from 'material-ui/List';
 import FlatButton from 'material-ui/FlatButton';
-
-import LeftIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
-import RightIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
  import {
  	amber300, lightGreen400, red400, lightBlue200,
  } from 'material-ui/styles/colors';

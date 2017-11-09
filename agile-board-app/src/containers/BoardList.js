@@ -27,7 +27,7 @@ class BoardList extends Component {
 					active={board.active}
 					daylist={this.props.days.daylist}
 				/> )
-			}
+			} else return null
 		});
 
 		const DevBoardComponents = this.props.boards.map((board, index) => {
@@ -45,7 +45,7 @@ class BoardList extends Component {
 						bucketList={this.props.buckets.bucketList}
 					/>
 				)
-			}
+			} else return null
 		})
 
 		return (
