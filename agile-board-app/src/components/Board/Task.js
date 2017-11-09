@@ -12,8 +12,12 @@ import {
  	red400,
  	fullWhite,
  	amber300,
- 	lightBlue200
+ 	lightBlue200,
  } from 'material-ui/styles/colors';
+
+import IconMenu from 'material-ui/IconMenu';
+import RaisedButton from 'material-ui/RaisedButton';
+import MenuItem from 'material-ui/MenuItem';
 
 class Task extends Component {
 	static propTypes = {
@@ -21,37 +25,49 @@ class Task extends Component {
 	}
 
 	title = (
-		<div style={{display:"inline-block", width:"100%"}}>
-			
-			<div style={{margin:"0.5em"}}>
-				{this.props.task.name}
-			</div>
-			<Avatar
-				style={{margin:"0em 0.5em 1em 0.5em"}}
-				icon={<Trash />} 
-				backgroundColor={red400}
-				color={fullWhite}
-				size={25}
-				onClick={()=>{console.log('deleting: '+this.props.task.name)}}
-			/>
-			<Avatar
-				style={{margin:"0em 0.5em 1em 0.5em"}}
-				icon={<EditPen />} 
-				backgroundColor={lightBlue200}
-				color={fullWhite}
-				size={25}
-				onClick={()=>{console.log('editing: '+this.props.task.name)}}
-			/>
-			<Avatar
-				style={{margin:"0em 0.5em 1em 0.5em"}}
-				icon={<Star />} 
-				backgroundColor={amber300}
-				color={fullWhite}
-				size={25}
-				onClick={()=>{console.log('Starring: '+this.props.task.name)}}
-			/>				
 
-		</div>
+		<IconMenu 
+		  	style={{textAlign:"center"}}
+	        iconButtonElement={
+	            <RaisedButton 
+	            	label={this.props.task.name}
+	            	
+	            /> 
+	        }
+	        anchorOrigin={{ vertical: 'top', horizontal: 'right',}}
+	    >
+	            <MenuItem primaryText={
+		          <Avatar
+					
+					icon={<Trash />} 
+					backgroundColor={red400}
+					color={fullWhite}
+					size={50}
+					onClick={()=>{console.log('deleting: '+this.props.task.name)}}
+				/>
+	            } />
+	            <MenuItem primaryText={
+		           <Avatar
+					
+					icon={<EditPen />} 
+					backgroundColor={lightBlue200}
+					color={fullWhite}
+					size={50}
+					onClick={()=>{console.log('editing: '+this.props.task.name)}}
+				/>
+	            } />
+	            <MenuItem primaryText={
+	            	<Avatar
+					
+					icon={<Star />} 
+					backgroundColor={amber300}
+					color={fullWhite}
+					size={50}
+					onClick={()=>{console.log('Starring: '+this.props.task.name)}}
+				/>		
+	            } />
+	           
+	          </IconMenu>
 	)
 
 	render(){
