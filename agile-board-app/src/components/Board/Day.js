@@ -2,8 +2,12 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Card, CardText, CardHeader} from 'material-ui/Card';
 import {List} from 'material-ui/List';
-//import styles from './board.scss';
 import Item from './Item';
+import {
+ 	red500, 
+ } from 'material-ui/styles/colors';
+import styles from './board.scss';
+
 
 class Day extends Component {
 	static propTypes = {
@@ -13,13 +17,13 @@ class Day extends Component {
 
  titleStyle = {
  		fontSize:"200%",
- 		color:"red",
+ 		color:red500,
 	}
 
 	render() {
 
 			return(
-			<Card expanded={true}>
+			<Card className={styles.boardList} expanded={true}>
 			  <CardHeader
 			    title={this.props.date}
 			    titleStyle={this.titleStyle}
