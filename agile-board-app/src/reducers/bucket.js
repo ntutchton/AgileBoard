@@ -68,22 +68,28 @@ const initialState = {
 	}]
 }
 
-
 export default function bucket(state=initialState, action) {
 	switch(action.type){
 		case BucketActionTypes.ADD_TASK:
-			return state.bucketList.map((bucket, index)=>{
+			const newBuckets = state.bucketList.map((bucket, index)=>{
 				if (index === action.index){
 					return {
 						...bucket,
-						tasks: bucket.tasks.push(action.task)
+						tasks: [
+							...bucket.tasks,
+							action.task
+						]
 					}
 				}
 				return bucket;
 			});
+			return {
+				bucketList: newBuckets
+			}
 		case BucketActionTypes.REMOVE_TASK:
 			return state.bucketList.map((bucket, index)=> {
 				if (index === action.index){
+					console.log(bucket)
 					return {
 						...bucket,
 						tasks: [

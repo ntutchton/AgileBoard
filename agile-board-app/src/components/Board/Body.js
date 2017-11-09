@@ -9,6 +9,7 @@ class Body extends Component {
 		active: PropTypes.bool.isRequired,
   		daylist: PropTypes.array,
   		bucketList: PropTypes.array,
+  		addTask: PropTypes.func,
 	}
 
 	render() {
@@ -35,11 +36,13 @@ class Body extends Component {
 		}
 		if (this.props.bucketList){
 			const buckets = 
-				this.props.bucketList.map(bucket => (
+				this.props.bucketList.map((bucket, index) => (
 					<Bucket
+						index={index}
 						title={bucket.title}
 						key={bucket.title}
 						tasks={bucket.tasks}
+						addTask={this.props.addTask}
 					/>
 				))
 

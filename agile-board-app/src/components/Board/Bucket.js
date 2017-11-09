@@ -14,11 +14,24 @@ class Bucket extends Component {
 	static propTypes = {
 		title: PropTypes.string.isRequired,
 		tasks: PropTypes.array.isRequired,
+		addTask: PropTypes.func.isRequired,
 	};
 
- titleStyle = {
+ 	titleStyle = {
  		fontSize:"200%",
  		color:red500,
+	}
+
+	state = {
+		newTask: { 
+			name: "NEW TASK: ",
+			desc: "a new task"
+		}
+	}
+
+	addTask = e => {
+		if (e) e.preventDefault()
+		this.props.addTask(this.state.newTask, this.props.index)
 	}
 
 	render() {
@@ -46,11 +59,12 @@ class Bucket extends Component {
 
 				    </CardText>
 					  	<RaisedButton 
-					  	className={styles.addbutton}
-					  	label="ADD TASK"
-				  		icon={<AddIcon color={red500}/>}
-				  		fullWidth={true}
-				  		secondary={true} 
+						  	className={styles.addbutton}
+						  	label="ADD TASK"
+					  		icon={<AddIcon color={red500}/>}
+					  		fullWidth={true}
+					  		secondary={true} 
+					  		onClick={this.addTask}
 						/>
 				</Card>				  				  	
 		

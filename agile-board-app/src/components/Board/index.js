@@ -44,6 +44,7 @@ class Board extends Component {
 					active={this.props.active}
 					daylist={this.props.daylist}
 					bucketList={this.props.bucketList}
+					addTask={this.props.addTask}
 				/>
 
 				<Snackbar 
@@ -65,7 +66,7 @@ Board.propTypes = {
 	active: PropTypes.bool.isRequired,
 	daylist: PropTypes.array,
 	bucketList: PropTypes.array,
-	addTasks: PropTypes.func,
+	addTask: PropTypes.func,
 	removeTasks: PropTypes.func,
 };
 

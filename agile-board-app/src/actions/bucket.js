@@ -1,6 +1,6 @@
 import * as BucketActionTypes from '../actiontypes/bucket';
 
-export const addTask = (index, task) => {
+export const addTask = (task, index) => {
 	return {
 		type: BucketActionTypes.ADD_TASK,
 		index,
