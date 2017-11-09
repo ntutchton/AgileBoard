@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {ListItem} from 'material-ui/List';
-import FlatButton from 'material-ui/FlatButton';
- import {
- 	amber300, lightGreen400, red400, lightBlue200,
+import {
+ 	amber300, lightGreen400, red400, lightBlue200, fullWhite
  } from 'material-ui/styles/colors';
+import Avatar from 'material-ui/Avatar';
+import Clear from 'material-ui/svg-icons/content/clear';
+import TestBug from'material-ui/svg-icons/action/bug-report';
+import Build from'material-ui/svg-icons/action/build';
+import Done from'material-ui/svg-icons/action/done';
+import Cancel from'material-ui/svg-icons/alert/error-outline';
+
+import IconMenu from 'material-ui/IconMenu';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import MenuItem from 'material-ui/MenuItem';
 
 const colors = {
 	test: {
@@ -21,56 +31,6 @@ const colors = {
 	}
 }
 
-
-const	StatusButtons = props => (
-	<div style={{display:'flex', flexDirection: 'row'}}>	
-		<FlatButton
-			style={{
-				backgroundColor: "",
-				margin:"10px 0px 10px 0px" 
-			}}
-			label = "CLEAR"
-			onClick = {()=>{ props.setStatus("")}}
-		/>
-		<FlatButton								
-			style={{
-				backgroundColor:colors.test.backgroundColor,
-				margin:"10px 0px 10px 0px" 
-			}}
-			label = "TEST"
-			onClick = {()=>{ props.setStatus("TEST")}}
-		/>
-		<FlatButton 
-			style={{
-				backgroundColor:colors.build.backgroundColor,
-				margin:"10px 0px 10px 0px" 
-			}}
-			label = "BUILD"
-			onClick = {()=>{ props.setStatus("BUILD")}}
-		/>
-		<FlatButton 
-			style={{
-				backgroundColor:colors.done.backgroundColor,
-				margin:"10px 0px 10px 0px" 
-			}}
-			label = "DONE"
-			onClick = {()=>{ props.setStatus("DONE")}}
-		/>
-		<FlatButton 
-			style={{
-				backgroundColor:colors.cancel.backgroundColor,
-				margin:"10px 0px 10px 0px"
-			}}
-			label = "CANCEL"
-			onClick = {()=>{ props.setStatus("CANCELED")}}
-		/>
-	</div>
-)
-
-StatusButtons.propTypes = {
-	setStatus : PropTypes.func.isRequired,
-}
-
 class Item extends Component {
 
 	static propTypes = {
@@ -79,18 +39,11 @@ class Item extends Component {
 
 	state = {
 		status: this.props.item.status,
-		expanded: false,
 		statusColor: {}
 	}
 
 	componentDidMount = () => {
 		this.setStatus(this.state.status)
-	}
-
-	toggleChangeStatus = () => {
-		this.setState({
-			expanded: !this.state.expanded
-		})
 	}
 
 	setStatus = newStatus => {
@@ -122,7 +75,63 @@ class Item extends Component {
 
 	
 
-	render() {		
+	render() {	
+
+const StatusMenu = (
+	  <IconMenu 
+	  style={{textAlign:"center"}}
+            iconButtonElement={
+              <IconButton touch={true}>
+                <MoreVertIcon />
+              </IconButton>
+            }
+          >
+            <MenuItem primaryText={
+	            <Avatar
+					icon={<Clear />} 
+					color={fullWhite}
+					size={50}
+					onClick={() => {this.setStatus("")}}
+				/>	
+            } />
+            <MenuItem primaryText={
+	            <Avatar
+					icon={<TestBug />} 
+					color={fullWhite}
+					backgroundColor={amber300}
+					size={50}
+					onClick={() => {this.setStatus("TEST")}}
+				/>	
+            } />
+            <MenuItem primaryText={
+            	<Avatar
+					icon={<Build />} 
+					color={fullWhite}
+					backgroundColor={lightBlue200}
+					size={50}
+					onClick={() => {this.setStatus("BUILD")}}
+				/>
+            } />
+            <MenuItem primaryText={
+            	<Avatar
+					icon={<Done />} 
+					color={fullWhite}
+					backgroundColor={lightGreen400}
+					size={50}
+					onClick={() => {this.setStatus("DONE")}}
+				/>
+            } />
+            <MenuItem primaryText={       		
+				<Avatar
+					icon={<Cancel />} 
+					color={fullWhite}
+					backgroundColor={red400}
+					size={50}
+					onClick={() => {this.setStatus("CANCELED")}}
+				/>
+            } />
+          </IconMenu>
+)
 
 
 		return(
@@ -132,11 +141,8 @@ class Item extends Component {
 					key={this.props.item.name + ":" + this.props.item.status}
 					primaryText={this.props.item.name}
 					secondaryText={this.state.status}
-					onClick={this.toggleChangeStatus}
+					rightIconButton={StatusMenu}
 				/>
-				{(this.state.expanded)
-					? (<StatusButtons setStatus={this.setStatus}>{this.props.children}</StatusButtons>)
-					: null}
 			</div>
 		)
 	}
