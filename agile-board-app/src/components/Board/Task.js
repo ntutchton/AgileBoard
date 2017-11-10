@@ -26,6 +26,7 @@ class Task extends Component {
 		handleRemoveTask: PropTypes.func.isRequired,
 		handleShiftTask: PropTypes.func.isRequired,
 		handleUpdateTask: PropTypes.func.isRequired,
+		handleEditTask: PropTypes.func.isRequired,
 	}
 
 	state = {
@@ -46,6 +47,10 @@ class Task extends Component {
 
 	handleShiftTaskRight = () => {
 		this.props.handleShiftTask(this.props.index, 1)
+	}
+
+	editTask = () => {
+		this.props.handleEditTask(this.props.index, this.props.task)
 	}
 
 	starTask = () => {
@@ -93,7 +98,7 @@ class Task extends Component {
 					backgroundColor={lightBlue200}
 					color={fullWhite}
 					size={50}
-					onClick={()=>{console.log('editing: '+this.props.task.name)}}
+					onClick={this.editTask}
 				/>
 	            } />
 	            <MenuItem primaryText={

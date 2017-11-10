@@ -4,6 +4,8 @@ import {Card, CardText, CardHeader} from 'material-ui/Card';
 import {List} from 'material-ui/List';
 import Task from './Task';
 import AddIcon from 'material-ui/svg-icons/content/add';
+import IconButton from 'material-ui/IconButton';
+import Star from 'material-ui/svg-icons/action/grade';
 import styles from './board.scss';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
@@ -11,6 +13,8 @@ import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import {
  	red500,
+ 	amber300,
+ 	grey300
  } from 'material-ui/styles/colors';
 
 class Bucket extends Component {
@@ -32,7 +36,8 @@ class Bucket extends Component {
 	state = {
 		newTask: {
 			name: "",
-			desc: ""
+			desc: "",
+			star: false
 		},
 		open: false
 	}
@@ -45,10 +50,10 @@ class Bucket extends Component {
 		if (e) e.preventDefault();
 		//check for values before submitting
 		if (this.state.newTask.name === "" || this.state.newTask.desc === "") 
-			{ return this.setState({ newTask: {}, open : false}) }
+			{ return this.setState({ newTask: {name: "", desc: "", star: false}, open : false}) }
 		//regular submit
 		this.props.addTask(this.state.newTask, this.props.index)
-		this.setState({ newTask: {name: "", desc: ""}, open : false})
+		this.setState({ newTask: {name: "", desc: "", star: false}, open : false})
 	}
 
 	handleAddTaskName = (e, value) => {
@@ -69,6 +74,14 @@ class Bucket extends Component {
 			}
 		})
 	}
+	toggleAddTaskStar = () => {
+		this.setState({ 
+			newTask: {
+				...this.state.newTask,
+				star: !this.state.newTask.star
+			}
+		})
+	}
 
 	handleRemoveTask = taskIndex => {
 		this.props.removeTask(taskIndex, this.props.index)
@@ -80,6 +93,18 @@ class Bucket extends Component {
 
 	handleUpdateTask = (taskIndex, task) => {
 		this.props.updateTask(taskIndex, this.props.index, task)
+	}
+
+	handleEditTask = (taskIndex, task) => {
+		this.setState({
+			newTask: {
+				name: task.name,
+				desc: task.desc, 
+				star: task.star
+			},
+			open: true
+		})
+		this.props.removeTask(taskIndex, this.props.index)
 	}
 
 	render() {
@@ -116,6 +141,7 @@ class Bucket extends Component {
 					  					handleRemoveTask={this.handleRemoveTask}
 					  					handleShiftTask={this.handleShiftTask}
 					  					handleUpdateTask={this.handleUpdateTask}
+					  					handleEditTask={this.handleEditTask}
 					  				/>
 					  			))
 					  		}
@@ -137,16 +163,33 @@ class Bucket extends Component {
 						  modal={false}
 						  open={this.state.open}
 						  onRequestClose={this.toggleOpen}
+						>{this.state.newTask.star
+						?
+						<IconButton	
+							iconStyle={{color:amber300}}
+							onClick={this.toggleAddTaskStar}
 						>
+							  <Star />
+						</IconButton>
+						:
+						<IconButton	
+							iconStyle={{color:grey300}}
+							onClick={this.toggleAddTaskStar}
+						>
+							  <Star />
+						</IconButton>
+						}
 						<TextField
-								    hintText="Task Name"
-								    onChange={this.handleAddTaskName}
-								/>
+						    hintText="Task Name"
+						    onChange={this.handleAddTaskName}
+						    value={this.state.newTask.name}
+						/>
 						<TextField
 							floatingLabelText="Description"
 							fullWidth={true}
 							multiLine={true}
 							onChange={this.handleAddTaskDesc}
+							value={this.state.newTask.desc}
 						/>
 						</Dialog>
 				</Card>				  				  	
