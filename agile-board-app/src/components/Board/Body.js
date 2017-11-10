@@ -10,6 +10,9 @@ class Body extends Component {
   		daylist: PropTypes.array,
   		bucketList: PropTypes.array,
   		addTask: PropTypes.func,
+  		addItem:PropTypes.func,
+  		removeItem: PropTypes.func,
+  		updateItem: PropTypes.func,
 	}
 
 	render() {
@@ -17,11 +20,15 @@ class Body extends Component {
 		if (this.props.daylist){
 
 			const dayList = 
-				this.props.daylist.map(day => (
+				this.props.daylist.map((day, index) => (
 					<Day 
 						date={day.date}
 						key={day.date}
+						index={index}
 						items={day.items}
+						addItem={this.props.addItem}
+						removeItem={this.props.removeItem}
+						updateItem={this.props.updateItem}
 					/>
 			));
 			

@@ -45,6 +45,9 @@ class Board extends Component {
 					daylist={this.props.daylist}
 					bucketList={this.props.bucketList}
 					addTask={this.props.addTask}
+					addItem={this.props.addItem}
+					removeItem={this.props.removeItem}
+					updateItem={this.props.updateItem}
 				/>
 
 				<Snackbar 
@@ -64,10 +67,13 @@ Board.propTypes = {
 	toggleBoard: PropTypes.func.isRequired,
 	handleSave: PropTypes.func.isRequired,
 	active: PropTypes.bool.isRequired,
+	addItem: PropTypes.func, 
 	daylist: PropTypes.array,
 	bucketList: PropTypes.array,
 	addTask: PropTypes.func,
 	removeTasks: PropTypes.func,
+	removeItem: PropTypes.func,
+	updateItem: PropTypes.func,
 };
 
 export default Board;

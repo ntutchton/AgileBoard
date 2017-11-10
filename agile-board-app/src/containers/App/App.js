@@ -25,9 +25,15 @@ class App extends Component {
   render() {
 
     const { dispatch, reducers } = this.props;
+    //board
     const toggleBoard = bindActionCreators(BoardActionCreators.toggleBoard, dispatch);
     const handleSave = bindActionCreators(BoardActionCreators.handleSave, dispatch);
+    //days
     const updateDays = bindActionCreators(DayActionCreators.updateDays, dispatch);
+    const addItem = bindActionCreators(DayActionCreators.addItem, dispatch);
+    const removeItem = bindActionCreators(DayActionCreators.removeItem, dispatch);
+    const updateItem = bindActionCreators(DayActionCreators.updateItem, dispatch);
+    //buckets
     const addTask = bindActionCreators(BucketActionCreators.addTask, dispatch);
     const removeTask = bindActionCreators(BucketActionCreators.removeTask, dispatch);
 
@@ -52,8 +58,11 @@ class App extends Component {
               toggleBoard={toggleBoard}
               handleSave={handleSave}
               updateDays={updateDays}
+              addItem={addItem}
+              removeItem={removeItem}
               addTask={addTask}
               removeTask={removeTask}
+              updateItem={updateItem}
             />
 
           </div>

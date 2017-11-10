@@ -24,6 +24,9 @@ class BoardList extends Component {
 					key={board.title}
 					toggleBoard={this.props.toggleBoard}
 					handleSave={this.props.handleSave}
+					addItem={this.props.addItem}
+					removeItem={this.props.removeItem}
+					updateItem={this.props.updateItem}
 					active={board.active}
 					daylist={this.props.days.daylist}
 				/> )

@@ -89,7 +89,6 @@ export default function bucket(state=initialState, action) {
 		case BucketActionTypes.REMOVE_TASK:
 			return state.bucketList.map((bucket, index)=> {
 				if (index === action.index){
-					console.log(bucket)
 					return {
 						...bucket,
 						tasks: [

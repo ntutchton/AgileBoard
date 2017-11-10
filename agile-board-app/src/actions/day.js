@@ -6,3 +6,28 @@ export const updateDays = days => {
 		days
 	};
 };
+
+export const addItem = (item, index) => {
+	return {
+		type: DayActionTypes.ADD_ITEM,
+		index,
+		item
+	}
+}
+
+export const removeItem = (itemIndex, index) => {
+	return {
+		type: DayActionTypes.REMOVE_ITEM,
+		index,
+		itemIndex
+	}
+}
+
+export const updateItem = (itemIndex, index, item) => {
+	return {
+		type: DayActionTypes.UPDATE_ITEM,
+		item,
+		index,
+		itemIndex
+	}
+}

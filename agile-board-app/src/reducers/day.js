@@ -11,7 +11,7 @@ const initialState = {
 			},
 			{
 				name: "WP12",
-				status: "DONE"
+				status: "CANCELED"
 			}
 		]
 	},
@@ -138,7 +138,7 @@ export default function Day(state=initialState, action) {
 	switch(action.type){
 		case DayActionTypes.UPDATE_DAYS:
 			const newDayDates = makeDays();
-			const newDayList = state.daylist.map((day, index) => {
+			const updatedDaylist = state.daylist.map((day, index) => {
 				return {
 					...day,
 					date: newDayDates[index].date
@@ -146,9 +146,60 @@ export default function Day(state=initialState, action) {
 			});
 			return {
 				...state,
-				daylist: newDayList
+				daylist: updatedDaylist
+			}
+		case DayActionTypes.ADD_ITEM:
+			const newDaylist = state.daylist.map((day, index) => {
+				if (index === action.index){
+					return {
+						...day,
+						items: [
+							...day.items,
+							action.item
+						]
+					}
+				}
+				return day
+			});
+			return {
+				daylist: newDaylist
+			}
+		case DayActionTypes.REMOVE_ITEM:
+			const newDays = state.daylist.map((day, index) => {
+				if (index === action.index){
+					return {
+						...day,
+						items: [
+							...day.items.slice(0, action.itemIndex),
+							...day.items.slice(action.itemIndex + 1)
+						]
+					}
+				}
+
+				return day
+			});
+			return {
+				daylist: newDays
+			}
+		case DayActionTypes.UPDATE_ITEM:
+			const updateDays = state.daylist.map((day, index) => {
+				if (index === action.index){
+					return {
+						...day,
+						items: [
+							...day.items.slice(0, action.itemIndex),
+							action.item,
+							...day.items.slice(action.itemIndex + 1)
+						]
+					}
+				}
+				return day
+			});
+			return {
+				daylist: updateDays
 			}
 		default: 
 			return state;
 	}
 }
+

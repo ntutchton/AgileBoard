@@ -10,6 +10,7 @@ import TestBug from'material-ui/svg-icons/action/bug-report';
 import Build from'material-ui/svg-icons/action/build';
 import Done from'material-ui/svg-icons/action/done';
 import Cancel from'material-ui/svg-icons/alert/error-outline';
+import Trash from 'material-ui/svg-icons/action/delete-forever';
 
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
@@ -35,9 +36,12 @@ class Item extends Component {
 
 	static propTypes = {
 		item: PropTypes.object.isRequired,
+		index: PropTypes.number.isRequired,
+		removeItem: PropTypes.func.isRequired,
 	}
 
 	state = {
+		name: this.props.item.name,
 		status: this.props.item.status,
 		statusColor: {}
 	}
@@ -52,6 +56,7 @@ class Item extends Component {
 			expanded: false,
 			statusColor: this.setStatusColor(newStatus)
 		})
+		this.props.updateItem(this.props.index, {name:this.state.name, status: newStatus})
 	}
 
 	setStatusColor = newStatus => {
@@ -73,7 +78,9 @@ class Item extends Component {
 		}
 	}
 
-	
+	handleRemoveItem =() => {
+		this.props.removeItem(this.props.index)
+	}
 
 	render() {	
 
@@ -128,6 +135,15 @@ const StatusMenu = (
 					backgroundColor={red400}
 					size={50}
 					onClick={() => {this.setStatus("CANCELED")}}
+				/>
+            } />
+            <MenuItem primaryText={       		
+				<Avatar
+					icon={<Trash />} 
+					color={fullWhite}
+					backgroundColor={'#222'}
+					size={50}
+					onClick={this.handleRemoveItem}
 				/>
             } />
           </IconMenu>
