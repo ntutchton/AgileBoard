@@ -71,7 +71,7 @@ class App extends Component {
           <div style={this.styles.app}>
             <header style={this.styles.header}>
               <img src={logo} style={this.styles.logo} alt="logo" />
-              <h1 style={this.styles.title}>AgileBoard <small>v0.0.1</small> </h1>
+              <h1 style={this.styles.title}>AgileBoard <small>v0.1.0</small> </h1>
             </header>
             <p style={this.styles.intro}>
               This is an exploratory project in incorporating IoT on the SCM/DCM team. <br/>
