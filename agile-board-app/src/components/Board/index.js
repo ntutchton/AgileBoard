@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Snackbar from 'material-ui/Snackbar';
 import Header from './Header';
 import Body from './Body';
-import styles from './board.scss';
 
 
 class Board extends Component {
@@ -15,6 +14,10 @@ class Board extends Component {
 			message:false
 		}
   };
+  styles = {
+    alignContent: "center",
+    textAlign:"center",
+  }
 
   sendMessage = () => {
   	this.setState({
@@ -31,7 +34,7 @@ class Board extends Component {
 
 	render() {
 		return (
-			<div className={styles.container}>
+			<div style={this.styles}>
 				<Header 
 					index={this.props.index}
 					title={this.props.title}

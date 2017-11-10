@@ -5,13 +5,13 @@ import IconButton from 'material-ui/IconButton';
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import NavClose from 'material-ui/svg-icons/navigation/close';
 import NavOpen from 'material-ui/svg-icons/navigation/expand-more';
-import styles from './board.scss';
 
-//updateDays 
-
-
+const styles = {
+	width:"100%",
+	textAlign:"left",
+}
 const Header = props => (
-	<div className={styles.header}>
+	<div style={styles}>
 		<AppBar
 			key={props.index}
 			title={props.title}

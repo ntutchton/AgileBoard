@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import styles from './board.scss';
 import Day from './Day';
 import Bucket from './Bucket';
 
@@ -16,6 +15,15 @@ class Body extends Component {
   		removeTask: PropTypes.func,
   		shiftTask: PropTypes.func,
   		updateTask: PropTypes.func,
+	}
+
+	styles = {
+	width: "95%",
+	padding: "0 2% 0 2%",
+	marginBottom:"25px",
+	overflowX:"auto",
+	MsBoxOrient: "horizontal",
+	display: "flex",
 	}
 
 	render() {
@@ -37,7 +45,7 @@ class Body extends Component {
 			
 			if(this.props.active){
 				return (
-					<div className={styles.body}>
+					<div style={this.styles}>
 						{dayList}
 					</div>
 				)
@@ -61,7 +69,7 @@ class Body extends Component {
 
 			if(this.props.active){
 				return (
-					<div className={styles.body}>
+					<div style={this.styles}>
 						{buckets}
 					</div>
 				)

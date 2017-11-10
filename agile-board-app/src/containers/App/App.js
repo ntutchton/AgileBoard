@@ -14,13 +14,39 @@ import * as BucketActionCreators from '../../actions/bucket';
 import BoardList from '../BoardList';
 
 import logo from '../../Dish_Network_logo_2012.svg';
-import styles from './App.scss';
 
 class App extends Component {
 
  static propTypes = {
     reducers: PropTypes.object.isRequired
   };
+
+  styles = {
+    app:{
+      background: "#222",
+      margin: "0",
+      padding: "0",
+      fontFamily: "sans-serif",
+    },
+    logo: {
+      height: '80px',
+    },
+    header: {
+      textAlign:'center',
+      backgroundColor: '#222',
+      height: '150px',
+      padding: '20px',
+      color: 'white',
+      }, 
+    title: {
+      fontSize: '1.5em',
+    },
+    intro: {
+      textAlign:'center',
+      fontSize: 'large',
+      color:'white',
+    }
+  }
 
   render() {
 
@@ -42,12 +68,12 @@ class App extends Component {
     return (
       <BrowserRouter>
           
-          <div className={styles.app}>
-            <header className={styles.header}>
-              <img src={logo} className={styles.logo} alt="logo" />
-              <h1 className={styles.title}>AgileBoard <small>v0.0.1</small> </h1>
+          <div style={this.styles.app}>
+            <header style={this.styles.header}>
+              <img src={logo} style={this.styles.logo} alt="logo" />
+              <h1 style={this.styles.title}>AgileBoard <small>v0.0.1</small> </h1>
             </header>
-            <p className={styles.intro}>
+            <p style={this.styles.intro}>
               This is an exploratory project in using IoT on the SCM/DCM team. <br/>
               This page is being served as a static UI.  Changes made will not be saved.
             </p>
