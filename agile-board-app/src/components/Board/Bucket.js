@@ -6,6 +6,9 @@ import Task from './Task';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import styles from './board.scss';
 import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 import {
  	red500,
  } from 'material-ui/styles/colors';
@@ -27,15 +30,44 @@ class Bucket extends Component {
 	}
 
 	state = {
-		newTask: { 
-			name: "NEW TASK: ",
-			desc: "a new task"
-		}
+		newTask: {
+			name: "",
+			desc: ""
+		},
+		open: false
+	}
+
+	toggleOpen = () => {
+	this.setState({open: !this.state.open});
 	}
 
 	addTask = e => {
-		if (e) e.preventDefault()
+		if (e) e.preventDefault();
+		//check for values before submitting
+		if (this.state.newTask.name === "" || this.state.newTask.desc === "") 
+			{ return this.setState({ newTask: {}, open : false}) }
+		//regular submit
 		this.props.addTask(this.state.newTask, this.props.index)
+		this.setState({ newTask: {name: "", desc: ""}, open : false})
+	}
+
+	handleAddTaskName = (e, value) => {
+		if (e) e.preventDefault();
+		this.setState({
+			newTask: {
+				...this.state.newTask,
+				name: value,
+			}
+		})
+	}
+	handleAddTaskDesc = (e, value) => {
+		if (e) e.preventDefault();
+		this.setState({
+			newTask: {
+				...this.state.newTask,
+				desc: value,
+			}
+		})
 	}
 
 	handleRemoveTask = taskIndex => {
@@ -51,6 +83,19 @@ class Bucket extends Component {
 	}
 
 	render() {
+		const addActions = [
+		      <FlatButton
+		      style={{float:"left"}}
+		        label="Cancel"
+		        primary={true}
+		        onClick={this.toggleOpen}
+		      />,
+		      <FlatButton
+		        label="Submit"
+		        primary={true}
+		        onClick={this.addTask}
+		      />,
+		    ];
 
 			return(
 			
@@ -78,14 +123,32 @@ class Bucket extends Component {
 
 
 				    </CardText>
-					  	<RaisedButton 
-						  	className={styles.addbutton}
+						<RaisedButton 						  	
+							className={styles.addbutton}
 						  	label="ADD TASK"
 					  		icon={<AddIcon color={red500}/>}
 					  		fullWidth={true}
-					  		secondary={true} 
-					  		onClick={this.addTask}
+					  		secondary={true}
+							onClick={this.toggleOpen} 
 						/>
+						<Dialog
+						  title="New Task"
+						  actions={addActions}
+						  modal={false}
+						  open={this.state.open}
+						  onRequestClose={this.toggleOpen}
+						>
+						<TextField
+								    hintText="Task Name"
+								    onChange={this.handleAddTaskName}
+								/>
+						<TextField
+							floatingLabelText="Description"
+							fullWidth={true}
+							multiLine={true}
+							onChange={this.handleAddTaskDesc}
+						/>
+						</Dialog>
 				</Card>				  				  	
 		
 

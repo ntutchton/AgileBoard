@@ -86,10 +86,10 @@ class Item extends Component {
 
 const StatusMenu = (
 	  <IconMenu 
-	  style={{textAlign:"center"}}
+	  		style={{textAlign:"center"}}
             iconButtonElement={
               <IconButton touch={true}>
-                <MoreVertIcon />
+                <MoreVertIcon color={fullWhite}/>
               </IconButton>
             }
           >

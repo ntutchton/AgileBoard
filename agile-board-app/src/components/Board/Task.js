@@ -5,7 +5,7 @@ import LeftIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import RightIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import Avatar from 'material-ui/Avatar';
 import EditPen from 'material-ui/svg-icons/image/edit';
-import Trash from 'material-ui/svg-icons/action/delete-forever';
+import Trash from 'material-ui/svg-icons/action/delete';
 import Star from 'material-ui/svg-icons/action/grade';
 import {
  	red500,
@@ -16,7 +16,7 @@ import {
  } from 'material-ui/styles/colors';
 
 import IconMenu from 'material-ui/IconMenu';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import MenuItem from 'material-ui/MenuItem';
 
 class Task extends Component {
@@ -70,8 +70,10 @@ class Task extends Component {
 		<IconMenu 
 		  	style={{textAlign:"center"}}
 	        iconButtonElement={
-	            <RaisedButton 
+	            <FlatButton 
 	            	label={this.props.task.name}
+	            	labelStyle={{color:'#222', fontSize:'1.4em'}}
+	            	primary={true}
 	            /> 
 	        }
 	        anchorOrigin={{ vertical: 'top', horizontal: 'right',}}

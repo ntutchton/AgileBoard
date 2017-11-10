@@ -98,9 +98,8 @@ handleInput = (e, value) => {
 			  		}
 			  	</List>
 			  </CardText>
-	  			
 			      <TextField
-			      style={{marginBottom:"20px"}}
+			      	  style={{marginBottom:"20px"}}
 				      floatingLabelText="Add Item"
 				      onChange={this.handleInput}
 				      value={this.state.newItem.name}
