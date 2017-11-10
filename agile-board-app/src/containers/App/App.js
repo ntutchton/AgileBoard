@@ -75,7 +75,7 @@ class App extends Component {
             </header>
             <p style={this.styles.intro}>
               This is an exploratory project in incorporating IoT on the SCM/DCM team. <br/>
-              This Kanban board is intended to make cross-team communication clearer and easier <br/>
+              This Kanban board is intended to make cross-team communication clearer and easier. <br/>
               This page is being served as a static UI for testing only.  <br />
               Changes made will not be saved.
             </p>
