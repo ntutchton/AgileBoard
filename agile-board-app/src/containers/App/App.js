@@ -74,8 +74,10 @@ class App extends Component {
               <h1 style={this.styles.title}>AgileBoard <small>v0.0.1</small> </h1>
             </header>
             <p style={this.styles.intro}>
-              This is an exploratory project in using IoT on the SCM/DCM team. <br/>
-              This page is being served as a static UI.  Changes made will not be saved.
+              This is an exploratory project in incorporating IoT on the SCM/DCM team. <br/>
+              This Kanban board is intended to make cross-team communication clearer and easier <br/>
+              This page is being served as a static UI for testing only.  <br />
+              Changes made will not be saved.
             </p>
         
 
