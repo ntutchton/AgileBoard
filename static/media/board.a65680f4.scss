@@ -1,0 +1,32 @@
+.container{
+    align-content: center;
+    text-align:center;
+}
+.header{
+	width:100%;
+	text-align:left;
+}
+
+.body{
+	width: 95%;
+	padding: 0 2% 0 2%;
+	margin-bottom:25px;
+	overflow-x:auto;
+	-ms-box-orient: horizontal;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+}
+.boardList{
+	display:flex;
+    flex-direction: column;
+    flex:1;
+    -webkit-align-self: stretch; 
+    align-self: stretch;
+}
+.addbutton{
+	margin-bottom: 20px;
+}
