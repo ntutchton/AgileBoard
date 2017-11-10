@@ -113,10 +113,9 @@ export default function bucket(state=initialState, action) {
 				bucketList: newBucketList
 			}
 		case BucketActionTypes.SHIFT_TASK:
-			let task = null;
 			const shiftedBucketList = state.bucketList.map((bucket, index)=>{
+				//cut out task at current index
 				if (index === action.index){
-					//task = bucket.tasks[action.taskIndex];
 					return {
 						...bucket,
 						tasks: [
@@ -125,10 +124,9 @@ export default function bucket(state=initialState, action) {
 						]
 					}
 				}
+				//reassgin task if new index exists
 				if (index === (action.index + action.shift)){
-					if (task === null){
-						task = state.bucketList[action.index].tasks[action.taskIndex]
-					}
+					const task = state.bucketList[action.index].tasks[action.taskIndex]
 					return {
 						...bucket,
 						tasks:[
@@ -141,6 +139,23 @@ export default function bucket(state=initialState, action) {
 			});
 			return {
 				bucketList: shiftedBucketList
+			}
+		case BucketActionTypes.UPDATE_TASK:
+			const updatedBucketlist = state.bucketList.map((bucket, index)=>{
+				if (index === action.index){
+					return {
+						...bucket,
+						tasks: [
+							...bucket.tasks.slice(0, action.taskIndex),
+							action.task,
+							...bucket.tasks.slice(action.taskIndex + 1)
+						]
+					}
+				}
+				return bucket
+			});
+			return {
+				bucketList: updatedBucketlist
 			}
 		default:
 			return state;

@@ -18,6 +18,7 @@ class Bucket extends Component {
 		addTask: PropTypes.func.isRequired,
 		removeTask: PropTypes.func.isRequired,
 		shiftTask: PropTypes.func.isRequired,
+		updateTask: PropTypes.func.isRequired,
 	};
 
  	titleStyle = {
@@ -45,6 +46,10 @@ class Bucket extends Component {
 		this.props.shiftTask(taskIndex, this.props.index, shift)
 	}
 
+	handleUpdateTask = (taskIndex, task) => {
+		this.props.updateTask(taskIndex, this.props.index, task)
+	}
+
 	render() {
 
 			return(
@@ -65,6 +70,7 @@ class Bucket extends Component {
 					  					key={task.name}
 					  					handleRemoveTask={this.handleRemoveTask}
 					  					handleShiftTask={this.handleShiftTask}
+					  					handleUpdateTask={this.handleUpdateTask}
 					  				/>
 					  			))
 					  		}

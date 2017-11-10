@@ -50,6 +50,7 @@ class Board extends Component {
 					addItem={this.props.addItem}
 					removeItem={this.props.removeItem}
 					updateItem={this.props.updateItem}
+					updateTask={this.props.updateTask}
 				/>
 
 				<Snackbar 
@@ -77,6 +78,7 @@ Board.propTypes = {
 	removeItem: PropTypes.func,
 	updateItem: PropTypes.func,
 	shiftTask: PropTypes.func,
+	updateTask: PropTypes.func,
 };
 
 export default Board;

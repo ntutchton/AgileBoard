@@ -24,3 +24,12 @@ export const shiftTask = (taskIndex, index, shift) => {
 		taskIndex
 	}
 }
+
+export const updateTask = (taskIndex, index, task) => {
+	return {
+		type: BucketActionTypes.UPDATE_TASK,
+		task,
+		index,
+		taskIndex
+	}
+}

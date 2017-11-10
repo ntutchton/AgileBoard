@@ -25,6 +25,15 @@ class Task extends Component {
 		index: PropTypes.number.isRequired,
 		handleRemoveTask: PropTypes.func.isRequired,
 		handleShiftTask: PropTypes.func.isRequired,
+		handleUpdateTask: PropTypes.func.isRequired,
+	}
+
+	state = {
+		isHighlighted: {}
+	}
+
+	componentDidMount= () => {
+		this.highlight(this.props.task.star)
 	}
 
 	handleRemoveTask = () => {
@@ -39,6 +48,23 @@ class Task extends Component {
 		this.props.handleShiftTask(this.props.index, 1)
 	}
 
+	starTask = () => {
+		let newTask = {
+			star: !this.props.task.star,
+			name: this.props.task.name,
+			desc: this.props.task.desc
+		}
+		this.props.handleUpdateTask(this.props.index, newTask)
+		this.highlight(newTask.star)
+	}
+
+	highlight = star => {
+		if (star === true){
+			this.setState({isHighlighted: {backgroundColor: amber300}})
+		}
+		else this.setState({isHighlighted: {}})
+	}
+
 	title = (
 		
 		<IconMenu 
@@ -46,7 +72,6 @@ class Task extends Component {
 	        iconButtonElement={
 	            <RaisedButton 
 	            	label={this.props.task.name}
-	       
 	            /> 
 	        }
 	        anchorOrigin={{ vertical: 'top', horizontal: 'right',}}
@@ -75,7 +100,7 @@ class Task extends Component {
 					backgroundColor={amber300}
 					color={fullWhite}
 					size={50}
-					onClick={()=>{console.log('Starring: '+this.props.task.name)}}
+					onClick={this.starTask}
 				/>		
 	            } />
 	           
@@ -89,6 +114,7 @@ class Task extends Component {
 					key={this.props.task.name + ":" + Math.random()}
 					primaryText={this.title}
 					secondaryText={this.props.task.desc}
+					innerDivStyle={this.state.isHighlighted}
           			secondaryTextLines={2}
           			leftAvatar={<Avatar 
           							style={{height:"80%"}}

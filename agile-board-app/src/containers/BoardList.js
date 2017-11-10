@@ -47,6 +47,7 @@ class BoardList extends Component {
 						active={board.active}
 						bucketList={this.props.buckets.bucketList}
 						shiftTask={this.props.shiftTask}
+						updateTask={this.props.updateTask}
 					/>
 				)
 			} else return null

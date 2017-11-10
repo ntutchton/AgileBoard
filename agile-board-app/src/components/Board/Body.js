@@ -15,6 +15,7 @@ class Body extends Component {
   		updateItem: PropTypes.func,
   		removeTask: PropTypes.func,
   		shiftTask: PropTypes.func,
+  		updateTask: PropTypes.func,
 	}
 
 	render() {
@@ -54,6 +55,7 @@ class Body extends Component {
 						addTask={this.props.addTask}
 						removeTask={this.props.removeTask}
 						shiftTask={this.props.shiftTask}
+						updateTask={this.props.updateTask}
 					/>
 				))
 
