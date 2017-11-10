@@ -1,8 +1,6 @@
 {
-  "main.js": "static/js/main.2192e5e0.js",
-  "main.js.map": "static/js/main.2192e5e0.js.map",
-  "static\\media\\App.scss": "static/media/App.46d0e4f7.scss",
+  "main.js": "static/js/main.0664ecb9.js",
+  "main.js.map": "static/js/main.0664ecb9.js.map",
   "static\\media\\Dish_Network_logo_2012.svg": "static/media/Dish_Network_logo_2012.d4440d7a.svg",
-  "static\\media\\board.scss": "static/media/board.a65680f4.scss",
-  "static\\media\\index.scss": "static/media/index.4e8a8e12.scss"
+  "static\\media\\board.scss": "static/media/board.a65680f4.scss"
 }
