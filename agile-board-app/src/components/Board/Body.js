@@ -13,6 +13,8 @@ class Body extends Component {
   		addItem:PropTypes.func,
   		removeItem: PropTypes.func,
   		updateItem: PropTypes.func,
+  		removeTask: PropTypes.func,
+  		shiftTask: PropTypes.func,
 	}
 
 	render() {
@@ -50,6 +52,8 @@ class Body extends Component {
 						key={bucket.title}
 						tasks={bucket.tasks}
 						addTask={this.props.addTask}
+						removeTask={this.props.removeTask}
+						shiftTask={this.props.shiftTask}
 					/>
 				))
 

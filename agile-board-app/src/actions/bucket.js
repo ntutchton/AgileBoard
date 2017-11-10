@@ -8,9 +8,19 @@ export const addTask = (task, index) => {
 	}
 }
 
-export const removeTask = index => {
+export const removeTask = (taskIndex, index) => {
 	return {
 		type: BucketActionTypes.REMOVE_TASK,
-		index
+		index,
+		taskIndex
+	}
+}
+
+export const shiftTask = (taskIndex, index, shift) => {
+	return {
+		type: BucketActionTypes.SHIFT_TASK,
+		shift,
+		index,
+		taskIndex
 	}
 }

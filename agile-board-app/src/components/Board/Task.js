@@ -22,33 +22,46 @@ import MenuItem from 'material-ui/MenuItem';
 class Task extends Component {
 	static propTypes = {
 		task: PropTypes.object.isRequired,
+		index: PropTypes.number.isRequired,
+		handleRemoveTask: PropTypes.func.isRequired,
+		handleShiftTask: PropTypes.func.isRequired,
+	}
+
+	handleRemoveTask = () => {
+		this.props.handleRemoveTask(this.props.index)
+	}
+//sets taskIndex and shift
+	handleShiftTaskLeft = () => {
+		this.props.handleShiftTask(this.props.index, -1)
+	}
+
+	handleShiftTaskRight = () => {
+		this.props.handleShiftTask(this.props.index, 1)
 	}
 
 	title = (
-
+		
 		<IconMenu 
 		  	style={{textAlign:"center"}}
 	        iconButtonElement={
 	            <RaisedButton 
 	            	label={this.props.task.name}
-	            	
+	       
 	            /> 
 	        }
 	        anchorOrigin={{ vertical: 'top', horizontal: 'right',}}
 	    >
 	            <MenuItem primaryText={
 		          <Avatar
-					
 					icon={<Trash />} 
 					backgroundColor={red400}
 					color={fullWhite}
 					size={50}
-					onClick={()=>{console.log('deleting: '+this.props.task.name)}}
+					onClick={this.handleRemoveTask}
 				/>
 	            } />
 	            <MenuItem primaryText={
 		           <Avatar
-					
 					icon={<EditPen />} 
 					backgroundColor={lightBlue200}
 					color={fullWhite}
@@ -58,7 +71,6 @@ class Task extends Component {
 	            } />
 	            <MenuItem primaryText={
 	            	<Avatar
-					
 					icon={<Star />} 
 					backgroundColor={amber300}
 					color={fullWhite}
@@ -83,14 +95,14 @@ class Task extends Component {
 			          				icon={<LeftIcon />} 
 			          				color={red500}
 			          				backgroundColor={"rgba(0,0,0,0)"}
-			          				onClick={()=>{console.log('move left')}}
+			          				onClick={this.handleShiftTaskLeft}
 			          			/>}
           			rightAvatar={<Avatar 
           							style={{height:"80%"}}
 			          				icon={<RightIcon />} 
 			          				color={red500}
 			          				backgroundColor={"rgba(0,0,0,0)"}
-			          				onClick={()=>{console.log('move right')}}
+			          				onClick={this.handleShiftTaskRight}
 			          			/>}
 				/> 
 

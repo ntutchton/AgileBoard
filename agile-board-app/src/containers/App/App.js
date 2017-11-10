@@ -36,6 +36,7 @@ class App extends Component {
     //buckets
     const addTask = bindActionCreators(BucketActionCreators.addTask, dispatch);
     const removeTask = bindActionCreators(BucketActionCreators.removeTask, dispatch);
+    const shiftTask = bindActionCreators(BucketActionCreators.shiftTask, dispatch)
 
     return (
       <BrowserRouter>
@@ -63,6 +64,7 @@ class App extends Component {
               addTask={addTask}
               removeTask={removeTask}
               updateItem={updateItem}
+              shiftTask={shiftTask}
             />
 
           </div>

@@ -12,9 +12,12 @@ import {
 
 class Bucket extends Component {
 	static propTypes = {
+		index: PropTypes.number.isRequired,
 		title: PropTypes.string.isRequired,
 		tasks: PropTypes.array.isRequired,
 		addTask: PropTypes.func.isRequired,
+		removeTask: PropTypes.func.isRequired,
+		shiftTask: PropTypes.func.isRequired,
 	};
 
  	titleStyle = {
@@ -34,6 +37,14 @@ class Bucket extends Component {
 		this.props.addTask(this.state.newTask, this.props.index)
 	}
 
+	handleRemoveTask = taskIndex => {
+		this.props.removeTask(taskIndex, this.props.index)
+	}
+
+	handleShiftTask = (taskIndex, shift) => {
+		this.props.shiftTask(taskIndex, this.props.index, shift)
+	}
+
 	render() {
 
 			return(
@@ -47,10 +58,13 @@ class Bucket extends Component {
 				    <CardText expandable={true}>
 					  	<List>
 					  		{
-					  			this.props.tasks.map(task => (
-					  				<Task	
+					  			this.props.tasks.map((task, index) => (
+					  				<Task
+					  					index={index}	
 					  					task={task}
 					  					key={task.name}
+					  					handleRemoveTask={this.handleRemoveTask}
+					  					handleShiftTask={this.handleShiftTask}
 					  				/>
 					  			))
 					  		}

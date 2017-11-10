@@ -45,6 +45,8 @@ class Board extends Component {
 					daylist={this.props.daylist}
 					bucketList={this.props.bucketList}
 					addTask={this.props.addTask}
+					removeTask={this.props.removeTask}
+					shiftTask={this.props.shiftTask}
 					addItem={this.props.addItem}
 					removeItem={this.props.removeItem}
 					updateItem={this.props.updateItem}
@@ -71,9 +73,10 @@ Board.propTypes = {
 	daylist: PropTypes.array,
 	bucketList: PropTypes.array,
 	addTask: PropTypes.func,
-	removeTasks: PropTypes.func,
+	removeTask: PropTypes.func,
 	removeItem: PropTypes.func,
 	updateItem: PropTypes.func,
+	shiftTask: PropTypes.func,
 };
 
 export default Board;
