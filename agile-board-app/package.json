@@ -1,5 +1,6 @@
 {
   "name": "agile-board-app",
+  "homepage": "https://ntutchton.github.io/AgileBoard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -50,9 +51,11 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "deploy": "npm run build&&gh-pages -d build"
   },
   "devDependencies": {
+    "gh-pages": "^1.0.0",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6"
   },
