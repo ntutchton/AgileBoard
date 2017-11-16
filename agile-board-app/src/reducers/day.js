@@ -46,7 +46,7 @@ const initialState = {
 		items: [
 			{
 				name: "SPICA C LABELS",
-				status: "TEST"
+				status: "BUILD"
 			},
 
 		]
@@ -60,7 +60,7 @@ const initialState = {
 			},
 			{
 				name: "SPICA D",
-				status: "BUILD"
+				status: ""
 			},
 			{
 				name: "AX110",

@@ -71,13 +71,13 @@ class App extends Component {
           <div style={this.styles.app}>
             <header style={this.styles.header}>
               <img src={logo} style={this.styles.logo} alt="logo" />
-              <h1 style={this.styles.title}>AgileBoard <small>v0.1.0</small> </h1>
+              <h1 style={this.styles.title}>AgileBoard <small>v0.1.1</small> </h1>
             </header>
             <p style={this.styles.intro}>
-              This is an exploratory project in incorporating IoT on the SCM/DCM team. <br/>
-              This Kanban board is intended to make cross-team communication clearer and easier. <br/>
-              This page is being served as a static UI for testing only.  <br />
-              Changes made will not be saved.
+              This is a UI demo for an IoT Kanban board. <br/>
+              The intent of this board is to make cross-team workflow more visible in the workspace. <br/>
+              This demo was built with React, Redux, and Material-UI <br/>
+              <strong>Changes made will not be saved.</strong>
             </p>
         
 

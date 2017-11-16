@@ -8,7 +8,6 @@ import EditPen from 'material-ui/svg-icons/image/edit';
 import Trash from 'material-ui/svg-icons/action/delete';
 import Star from 'material-ui/svg-icons/action/grade';
 import {
- 	red500,
  	red400,
  	fullWhite,
  	amber300,
@@ -16,7 +15,7 @@ import {
  } from 'material-ui/styles/colors';
 
 import IconMenu from 'material-ui/IconMenu';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
 
 class Task extends Component {
@@ -68,6 +67,7 @@ class Task extends Component {
 			this.setState({isHighlighted: {backgroundColor: amber300}})
 		}
 		else this.setState({isHighlighted: {}})
+
 	}
 
 	title = (
@@ -75,9 +75,9 @@ class Task extends Component {
 		<IconMenu 
 		  	style={{textAlign:"center"}}
 	        iconButtonElement={
-	            <FlatButton 
+	            <RaisedButton 
 	            	label={this.props.task.name}
-	            	labelStyle={{color:'#222', fontSize:'1.4em'}}
+	            	labelStyle={{color:fullWhite, whiteSpace:"nowrap"}}
 	            	primary={true}
 	            /> 
 	        }
@@ -116,27 +116,15 @@ class Task extends Component {
 
 	render(){
 		return(
-			<div>
+			<div style={{alignItems:"center"}}>
 				<ListItem 
 					key={this.props.task.name + ":" + Math.random()}
 					primaryText={this.title}
 					secondaryText={this.props.task.desc}
 					innerDivStyle={this.state.isHighlighted}
           			secondaryTextLines={2}
-          			leftAvatar={<Avatar 
-          							style={{height:"80%"}}
-			          				icon={<LeftIcon />} 
-			          				color={red500}
-			          				backgroundColor={"rgba(0,0,0,0)"}
-			          				onClick={this.handleShiftTaskLeft}
-			          			/>}
-          			rightAvatar={<Avatar 
-          							style={{height:"80%"}}
-			          				icon={<RightIcon />} 
-			          				color={red500}
-			          				backgroundColor={"rgba(0,0,0,0)"}
-			          				onClick={this.handleShiftTaskRight}
-			          			/>}
+          			leftIcon={<LeftIcon style={{height:'80%'}} onClick={this.handleShiftTaskLeft}/>} 
+          			rightIcon={<RightIcon style={{height:'80%'}} onClick={this.handleShiftTaskRight}/>}
 				/> 
 
 			</div>

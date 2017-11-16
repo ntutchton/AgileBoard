@@ -24,7 +24,7 @@ class Day extends Component {
 
  titleStyle = {
  		fontSize:"200%",
- 		color:red500,
+ 		color:"#222",
 	}
 	state = {
 		active: false,

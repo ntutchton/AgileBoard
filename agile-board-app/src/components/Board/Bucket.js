@@ -30,7 +30,7 @@ class Bucket extends Component {
 
  	titleStyle = {
  		fontSize:"200%",
- 		color:red500,
+ 		color:"#222",
 	}
 
 	state = {
@@ -154,7 +154,7 @@ class Bucket extends Component {
 						  	label="ADD TASK"
 					  		icon={<AddIcon color={red500}/>}
 					  		fullWidth={true}
-					  		secondary={true}
+					  		labelStyle={{color:red500}}
 							onClick={this.toggleOpen} 
 						/>
 						<Dialog

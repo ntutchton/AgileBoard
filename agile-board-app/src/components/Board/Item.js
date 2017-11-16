@@ -89,7 +89,7 @@ const StatusMenu = (
 	  		style={{textAlign:"center"}}
             iconButtonElement={
               <IconButton touch={true}>
-                <MoreVertIcon color={fullWhite}/>
+                <MoreVertIcon color={this.state.status ? fullWhite : "#222"}/>
               </IconButton>
             }
           >
